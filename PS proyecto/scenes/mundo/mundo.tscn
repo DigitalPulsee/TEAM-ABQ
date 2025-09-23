@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/player/player.tscn" type="PackedScene" id=1]
+
+[sub_resource type="ProxyTexture" id=1]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 140.33, 10.997 )
+
+[node name="mundo" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource( 1 )]
+position = Vector2( -61.0314, -78.4327 )
+
+[node name="plataforma" type="StaticBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="plataforma"]
+position = Vector2( 167.367, 48.2906 )
+scale = Vector2( 280.297, 21.1674 )
+texture = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforma"]
+position = Vector2( 167.81, 48.695 )
+shape = SubResource( 2 )
+
+[node name="plataforma2" type="StaticBody2D" parent="."]
+position = Vector2( -265.127, -96.1227 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="plataforma2"]
+position = Vector2( 167.367, 48.2906 )
+scale = Vector2( 280.297, 21.1674 )
+texture = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforma2"]
+position = Vector2( 167.81, 48.695 )
+shape = SubResource( 2 )
+
+[node name="plataforma3" type="StaticBody2D" parent="."]
+position = Vector2( -240.065, 104.791 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="plataforma3"]
+position = Vector2( 167.367, 48.2906 )
+scale = Vector2( 280.297, 21.1674 )
+texture = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="plataforma3"]
+position = Vector2( 167.81, 48.695 )
+shape = SubResource( 2 )

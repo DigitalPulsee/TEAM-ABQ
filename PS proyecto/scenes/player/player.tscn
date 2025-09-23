@@ -1,0 +1,154 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://assets/Imagenes/estatico/2.png" type="Texture" id=1]
+[ext_resource path="res://assets/Imagenes/estatico/4.png" type="Texture" id=2]
+[ext_resource path="res://assets/Imagenes/estatico/3.png" type="Texture" id=3]
+[ext_resource path="res://assets/Imagenes/estatico/1.png" type="Texture" id=4]
+[ext_resource path="res://assets/Imagenes/corriendo/2.png" type="Texture" id=5]
+[ext_resource path="res://assets/Imagenes/corriendo/1.png" type="Texture" id=6]
+[ext_resource path="res://assets/Imagenes/corriendo/4.png" type="Texture" id=7]
+[ext_resource path="res://assets/Imagenes/corriendo/3.png" type="Texture" id=8]
+[ext_resource path="res://assets/Imagenes/corriendo/5.png" type="Texture" id=9]
+[ext_resource path="res://assets/Imagenes/corriendo/6.png" type="Texture" id=10]
+[ext_resource path="res://assets/Imagenes/corriendo/7.png" type="Texture" id=11]
+[ext_resource path="res://assets/Imagenes/corriendo/8.png" type="Texture" id=12]
+[ext_resource path="res://assets/Imagenes/caminata/3.png" type="Texture" id=13]
+[ext_resource path="res://assets/Imagenes/caminata/4.png" type="Texture" id=14]
+[ext_resource path="res://assets/Imagenes/caminata/2.png" type="Texture" id=15]
+[ext_resource path="res://assets/Imagenes/caminata/5.png" type="Texture" id=16]
+[ext_resource path="res://assets/Imagenes/caminata/1.png" type="Texture" id=17]
+[ext_resource path="res://assets/Imagenes/caminata/6.png" type="Texture" id=18]
+[ext_resource path="res://assets/Imagenes/caminata/7.png" type="Texture" id=19]
+[ext_resource path="res://assets/Imagenes/caminata/8.png" type="Texture" id=20]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends KinematicBody2D
+
+#Variables
+export var speed = 100
+export var salto = -300 #fuerza del salto, en negativo para ia a arriba
+var gravity = 800
+var velocity = Vector2()
+
+export var dash_speed = 4000 #velocidad del dash
+export var dash_duration = 0.15 #duracción del dash
+export var dash_cooldown = 0.10 #tiempo de espera del dash
+var is_dashing = false #estado para saber si el jugador esta en el dash
+var dash_timer = 0.0 #temporizador para la duración del dash
+var dash_cooldown_timer = 0.0 #temporizador para el cooldown
+
+# Variables del Doble Salto
+var jumps_left = 2 # Cantidad de saltos disponibles (1 para el salto inicial, 1 para el doble salto)
+
+
+
+
+
+func _ready():
+	pass
+func _physics_process(delta):
+	velocity.x = 0
+	#Actualizar temporizadores
+	if dash_timer > 0:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			#terminar el dash
+			is_dashing = false
+			velocity = Vector2()
+			dash_cooldown_timer = dash_cooldown
+	if dash_cooldown_timer > 0:
+		dash_cooldown_timer -= delta
+			
+	
+	#movimineto izquierda derecha
+	if not is_dashing:
+		if Input.is_action_pressed(\"ui_derecha\"):
+			velocity.x += speed
+		if Input.is_action_pressed(\"ui_izquierda\"):
+			velocity.x -= speed
+	
+	# Si estamos en el suelo, resetear los saltos disponibles
+	if is_on_floor():
+		jumps_left = 2
+	
+	# Manejar el salto y el movimient
+	if not is_dashing:
+		# Movimiento horizontal
+		var direction = 0
+		if Input.is_action_pressed(\"ui_derecha\"):
+			direction += 1
+		if Input.is_action_pressed(\"ui_izquierda\"):
+			direction -= 1
+		velocity.x = direction * speed
+
+			# Salto
+	if Input.is_action_just_pressed(\"ui_arriba\") and jumps_left > 0:
+		velocity.y = salto
+		jumps_left -= 1
+	
+	
+	#salto
+	if is_on_floor():
+		if Input.is_action_just_pressed(\"ui_arriba\"):
+			velocity.y = salto
+	else:
+		#aplicar gravedad
+		velocity.y += gravity * delta
+	
+	#Iniciar el dash
+	if Input.is_action_just_pressed(\"ui_accept\") and not is_dashing and dash_cooldown_timer <= 0:
+		var dash_direction = 0
+		if Input.is_action_pressed(\"ui_derecha\"):
+			dash_direction = 1
+			print(\"dash\")
+		if Input.is_action_pressed(\"ui_izquierda\"):
+			dash_direction = -1
+			
+		if dash_direction != 0:
+			is_dashing = true
+			velocity = Vector2(dash_speed * dash_direction, 0)
+			dash_timer = dash_duration
+	
+	#mover el personaje
+	velocity = move_and_slide(velocity, Vector2.UP)
+	
+"
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 3 ), ExtResource( 2 ) ],
+"loop": true,
+"name": "idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 17 ), ExtResource( 15 ), ExtResource( 13 ), ExtResource( 14 ), ExtResource( 16 ), ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ), ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "walk",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 8 ), ExtResource( 7 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 11.0435, 24.1045 )
+
+[node name="player" type="KinematicBody2D"]
+script = SubResource( 1 )
+
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "walk"
+frame = 8
+playing = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -4.15813, -3.72448 )
+shape = SubResource( 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 1.41581, 0 )
+current = true
+zoom = Vector2( 0.5, 0.5 )
