@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE POWER OF PROGRAMMING</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Video de fondo -->
+    <video autoplay muted loop playsinline class="background-video">
+        <source src="assets/background-video.mp4" type="video/mp4">
+    </video>
+    
+    <header>
+        <img src="assets/logo.png" alt="Logo" class="logo">
+        <nav>
+           
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Botones de navegación principal -->
+        <div class="section-buttons">
+            <button class="section-btn active" data-section="inicio">INICIO</button>
+            <button class="section-btn" data-section="juegos">JUEGOS</button>
+            <button class="section-btn" data-section="apps">APLICACIONES</button>
+            <button class="section-btn" data-section="portafolio">PORTAFOLIO</button>
+            <button class="section-btn" data-section="nosotros">NOSOTROS</button>
+            <button class="section-btn" data-section="contacto">CONTACTO</button>
+        </div>
+
+        <!-- Sección Inicio -->
+        <div id="inicio-section" class="content-section active">
+            <div class="title-container">
+                <h1>THE</h1>
+                <h1> POWER</h1>
+                <h1 class="gradient-text">OF 
+                </h1>
+                <h1 class="gradient-text"> 
+                PROGRAMMING</h1>
+            </div>
+            <div class="slogan">
+                <p>Transformando ideas en <span>realidad digital</span></p>
+            </div>
+            <div class="quote-container">
+                <div class="quote-card">
+                    <blockquote>
+                        "El código es el lienzo donde pintamos experiencias digitales."
+                        <footer>— TEAM ABQ</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Juegos -->
+        <div id="juegos-section" class="content-section hidden">
+            <h2 class="section-title">NUESTROS JUEGOS</h2>
+            <div class="game-card">
+                <img src="assets/game-preview.jpg" alt="Juego Destacado" loading="lazy">
+                <div class="game-info">
+                    <h3>Cyber Adventure</h3>
+                    <p>Un juego de aventuras en mundo abierto con gráficos sencillos en estilo pixelart. Pronto Disponible para PC.</p>
+                    <div class="download-options">
+                        <a href="#" class="download-btn">EN DESARROLLO</a>
+                        <a href="#" class="download-btn"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Aplicaciones -->
+        <div id="apps-section" class="content-section hidden">
+            <h2 class="section-title">APLICACIONES DISPONIBLES</h2>
+            <div class="app-grid">
+                <div class="app-card">
+                    <h3>TEAM ABQ POS</h3>
+                    <p>SISTEMA DE CAJA PARA NEGOCIOS PEQUEÑOS</p>
+                    <a href="#" class="download-btn">ENVIAR MENSAJE PARA INFO</a>
+                </div>
+                <div class="app-card">
+                    <h3>NEO</h3>
+                    <p>APP DE MENSAJERIA QUE PROMETE UNA INTERAZ FUTURISTA</p>
+                    <a href="#" class="download-btn">EN DESARROLLO</a>
+                </div>
+            </div>
+        </div>
+
+        <div id="portafolio-section" class="content-section hidden">
+    <h2 class="section-title">PORTAFOLIO</h2>
+    
+    <div class="portfolio-grid">
+        <!-- Proyecto 1 -->
+        <div class="portfolio-card">
+            <div class="project-header">
+                <i class="fas fa-code project-icon"></i>
+                <h3>Sitio Web Corporativo</h3>
+            </div>
+            <div class="project-details">
+                <h4>D'YEM:</h4>
+                <ul>
+                    <li>HTML,CSS Y JAVASCRIPT</li>
+                    <li>proyecto maquetado unicamente</li>
+                   
+                </ul>
+                <h4>Logros:</h4>
+                <ul>
+                    <li>ayudó a mejorar la comuicación entre vendedor y comprador </li>
+                    <li>Proporcionó una cercania con el cliente</li>
+                    <li>Tiene una gran facilidad de manejo</li>
+                </ul>
+            </div>
+            <a href="#" class="project-link"></a>
+        </div>
+
+        <!-- Proyecto 2 -->
+        <div class="portfolio-card">
+            <div class="project-header">
+                <i class="fas fa-mobile-alt project-icon"></i>
+                <h3>Aplicación Móvil</h3>
+            </div>
+            <div class="project-details">
+                <h4>NEO:</h4>
+                <ul>
+                    <li>kotline</li>
+                    <li>Autenticación: Firebase</li>
+                    <li>API para chatgpt</li>
+                </ul>
+                <h4>Logros:</h4>
+                <ul>
+                    <li>Proximamente publicada en Play Store y App Store</li>
+                    <li>EN DESARROLLO</li>
+                </ul>
+            </div>
+            <a href="#" class="project-link"></a>
+        </div>
+
+        <!-- Proyecto 3 -->
+        <div class="portfolio-card">
+            <div class="project-header">
+                <i class="fas fa-shopping-cart project-icon"></i>
+                <h3>E-commerce</h3>
+            </div>
+            <div class="project-details">
+                <h4>TEAM ABQ POS:</h4>
+                <ul>
+                    <li>Desarrollado en Python</li>
+                    <li>Funcionalidades para negocio pequeño</li>
+                   
+                </ul>
+                <h4>Logros:</h4>
+                <ul>
+                    <li>Conversión de moneda para facilitar los cambios</li>
+                    <li>Implementación de exportación de reportes</li>
+                    <li>Sistema de inventario en tiempo real</li>
+                </ul>
+            </div>
+            <a href="#" class="project-link"></a>
+        </div>
+    </div>
+</div>
+        <!-- Sección Nosotros -->
+        <div id="nosotros-section" class="content-section hidden">
+            <h2 class="section-title">SOBRE NOSOTROS</h2>
+            <div class="about-content">
+                <div class="about-card">
+                    <h3>Misión</h3>
+                    <p>Empoderar a las empresas con soluciones digitales innovadoras que impulsen su crecimiento y transformación digital.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Visión</h3>
+                    <p>Ser reconocidos como líderes en desarrollo de software y soluciones tecnológicas que marcan la diferencia en el mercado.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Valores</h3>
+                    <p>Innovación, excelencia técnica, compromiso con los resultados y pasión por la tecnología.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Contacto -->
+        <div id="contacto-section" class="content-section hidden">
+            <h2 class="section-title">CONTÁCTANOS</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>teamabq@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <p>+58 414-8612041</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <p>Ciudad Guayana, Estado Bolivar-Venezuela</p>
+                    </div>
+                </div>
+                <form action="https://formspree.io/f/xblkeenp" method="POST" class="contact-form">
+                    <input type="hidden" name="_next" value="https://tudominio.com/gracias.html">
+                    <input type="hidden" name="_subject" value="Nuevo mensaje desde TEAM ABQ">
+                    <div class="form-group">
+                        <input type="text" name="Nombre" placeholder="Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" name="Email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea name="Mensaje" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <button type="submit" class="download-btn">ENVIAR MENSAJE</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="copyright">
+        <p>&copy; <span id="current-year"></span> TEAM ABQ. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Control de secciones
+        document.querySelectorAll('.section-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const sectionId = this.getAttribute('data-section');
+                
+                document.querySelectorAll('.section-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                document.querySelectorAll('.content-section').forEach(section => {
+                    section.classList.remove('active');
+                    section.classList.add('hidden');
+                });
+                
+                document.getElementById(`${sectionId}-section`).classList.remove('hidden');
+                document.getElementById(`${sectionId}-section`).classList.add('active');
+            });
+        });
+
+        // Menús desplegables
+        document.querySelectorAll('.dropbtn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const dropdown = this.nextElementSibling;
+                const allDropdowns = document.querySelectorAll('.dropdown-content');
+                
+                allDropdowns.forEach(content => {
+                    if (content !== dropdown) content.style.display = 'none';
+                });
+                
+                dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Cerrar menús al hacer clic fuera
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.dropdown-content').forEach(content => {
+                content.style.display = 'none';
+            });
+        });
+
+        // Actualizar año copyright
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Mejorar formulario de contacto
+        const contactForm = document.querySelector('.contact-form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                const btn = this.querySelector('button[type="submit"]');
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+                btn.disabled = true;
+                
+                // Simular envío (en producción quitar este setTimeout)
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-check"></i> Enviado';
+                }, 1500);
+            });
+        }
+    </script>
+</body>
+</html>
