@@ -1,0 +1,313 @@
+/* Estilos generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #0a0a12;
+    color: #c7d5e0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Fondo personalizable - Reemplaza la URL con tu imagen */
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+/* Efecto de overlay para mejorar legibilidad */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10, 10, 18, 0.85);
+    z-index: -1;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header estilo Steam */
+.steam-header {
+    background: linear-gradient(90deg, #171a21 0%, #1b2838 100%);
+    padding: 15px 0;
+    border-bottom: 1px solid #363c44;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.steam-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.steam-logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
+    letter-spacing: 2px;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 100px 0;
+    position: relative;
+}
+
+.version-badge {
+    background: linear-gradient(45deg, #6a00ff, #ff00ff);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 30px;
+    box-shadow: 0 0 20px rgba(106, 0, 255, 0.7);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.game-title {
+    font-size: 60px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 15px #6a00ff, 0 0 30px #ff00ff;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+}
+
+.game-subtitle {
+    font-size: 22px;
+    color: #c7d5e0;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    line-height: 1.6;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(45deg, #6a00ff, #ff00ff);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 15px rgba(106, 0, 255, 0.5);
+}
+
+.cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(106, 0, 255, 0.8);
+}
+
+/* Secciones de contenido */
+.content-section {
+    padding: 60px 0;
+    border-bottom: 1px solid #33334d;
+}
+
+.section-title {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 30px;
+    text-shadow: 0 0 10px #00ffff;
+    position: relative;
+    display: inline-block;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #00ffff, transparent);
+}
+
+/* Tarjetas de información */
+.info-card {
+    background: rgba(23, 26, 33, 0.8);
+    border-radius: 10px;
+    padding: 30px;
+    border: 1px solid #363c44;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.info-card p {
+    margin-bottom: 15px;
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+.info-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Actos de la historia */
+.story-act {
+    margin-bottom: 30px;
+    padding: 25px;
+    background: rgba(42, 71, 94, 0.5);
+    border-radius: 8px;
+    border-left: 5px solid #6a00ff;
+}
+
+.act-title {
+    color: #ff9900;
+    margin-bottom: 15px;
+    font-size: 24px;
+    text-shadow: 0 0 5px rgba(255, 153, 0, 0.5);
+}
+
+.story-act p {
+    font-size: 18px;
+    line-height: 1.6;
+}
+
+/* Grid de personajes */
+.characters-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+
+.character-card {
+    text-align: center;
+    padding: 20px;
+    background: rgba(27, 40, 56, 0.7);
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.character-card:hover {
+    transform: translateY(-5px);
+}
+
+.character-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(45deg, #6a00ff, #ff00ff);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 36px;
+    color: white;
+    margin: 0 auto 15px;
+    font-weight: bold;
+}
+
+.character-card h3 {
+    color: #00ffff;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.character-card p {
+    font-size: 16px;
+    color: #c7d5e0;
+}
+
+/* Grid de mecánicas */
+.mechanics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+.mechanic-card {
+    padding: 20px;
+    background: rgba(27, 40, 56, 0.7);
+    border-radius: 8px;
+    border-top: 3px solid #ff00ff;
+}
+
+.mechanic-card h3 {
+    color: #00ffff;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.mechanic-card p {
+    font-size: 16px;
+    color: #c7d5e0;
+}
+
+/* Footer */
+.steam-footer {
+    background: #171a21;
+    padding: 40px 0;
+    border-top: 1px solid #363c44;
+    margin-top: 40px;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.footer-section h3 {
+    color: #00ffff;
+    margin-bottom: 15px;
+    font-size: 20px;
+    text-shadow: 0 0 5px #00ffff;
+}
+
+.footer-section p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+.copyright {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #363c44;
+    color: #8f98a0;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 40px;
+    }
+    
+    .game-subtitle {
+        font-size: 18px;
+    }
+    
+    .section-title {
+        font-size: 28px;
+    }
+    
+    .characters-grid,
+    .mechanics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .steam-logo {
+        font-size: 22px;
+    }
+}
