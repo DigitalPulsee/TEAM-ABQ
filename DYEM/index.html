@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D'YEM | Moda de Alta Costura</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables CSS con la nueva paleta de colores */
+        :root {
+            --primary-color: #F27E88;     /* Rosa principal */
+            --secondary-color: #F2B3B9;   /* Rosa claro */
+            --accent-color: #F27E93;      /* Rosa intenso */
+            --light-color: #F2F2F2;       /* Gris claro */
+            --highlight-color: #F2AE30;   /* Dorado/naranja */
+            --dark-color: #333333;        /* Texto oscuro */
+            --transition: all 0.3s ease;
+            --spacing: 2rem;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(242, 126, 136, 0.1);
+            --shadow-intense: 0 8px 25px rgba(242, 126, 136, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--highlight-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-intense);
+        }
+        
+        .btn-accent {
+            background-color: var(--highlight-color);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background-color: #e09d20;
+        }
+        
+        /* Badge powered by TEAM ABQ - Más discreto */
+        .team-badge {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background-color: rgba(242, 174, 48, 0.85);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .team-badge:hover {
+            background-color: rgba(242, 174, 48, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 2px 10px rgba(242, 126, 136, 0.1);
+            transition: var(--transition);
+        }
+        
+        .header-scrolled {
+            padding: 10px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            position: relative;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--highlight-color);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .nav-icons a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary-color);
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(242, 126, 136, 0.2), rgba(242, 179, 185, 0.2)), url('assets/images/hero-banner.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+            color: var(--accent-color);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            color: #555;
+        }
+        
+        /* Colecciones */
+        .collection-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .collection-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            height: 400px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .collection-item:hover {
+            box-shadow: var(--shadow-intense);
+        }
+        
+        .collection-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .collection-item:hover img {
+            transform: scale(1.05);
+        }
+        
+        .collection-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem;
+            background: linear-gradient(to top, rgba(242, 126, 136, 0.9), transparent);
+            color: white;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .collection-item:hover .collection-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Productos Destacados */
+        .products-slider {
+            position: relative;
+            overflow: hidden;
+            padding: 1rem 0;
+        }
+        
+        .products-container {
+            display: flex;
+            gap: 2rem;
+            transition: transform 0.5s ease;
+            padding: 1rem 0;
+        }
+        
+        .product-card {
+            min-width: 280px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-intense);
+        }
+        
+        .product-img {
+            height: 350px;
+            overflow: hidden;
+            background-color: var(--light-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .product-card:hover .product-img img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-category {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .product-name {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+        
+        .product-price {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--highlight-color);
+        }
+        
+        .slider-nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .slider-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .slider-btn:hover {
+            background-color: var(--accent-color);
+            transform: scale(1.1);
+        }
+        
+        /* Sobre Nosotros */
+        .about {
+            background-color: var(--light-color);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            padding-right: 2rem;
+        }
+        
+        .about-img {
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            background-color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: var(--dark-color);
+            text-align: center;
+        }
+        
+        .about-year {
+            color: var(--highlight-color);
+            font-weight: 700;
+        }
+        
+        /* Testimonios */
+        .testimonials {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+        }
+        
+        .testimonials .section-title {
+            color: var(--dark-color);
+        }
+        
+        .testimonials .section-title:after {
+            background-color: var(--highlight-color);
+        }
+        
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial-card {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 2rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        /* Contacto */
+        .contacto {
+            background-color: var(--light-color);
+        }
+        
+        .contacto-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: start;
+        }
+        
+        .contacto-info h3, .contacto-form h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .contacto-info h3:after, .contacto-form h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--highlight-color);
+        }
+        
+        .contacto-details li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+        
+        .contacto-details i {
+            color: var(--primary-color);
+            margin-top: 3px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--border-radius);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(242, 126, 136, 0.1);
+        }
+        
+        .success-message {
+            background-color: rgba(76, 175, 80, 0.1);
+            color: #2e7d32;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #4caf50;
+            margin-top: 1rem;
+        }
+        
+        .error-message {
+            background-color: rgba(244, 67, 54, 0.1);
+            color: #c62828;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+            border: 1px solid #f44336;
+            margin-top: 1rem;
+        }
+        
+        /* Newsletter */
+        .newsletter {
+            text-align: center;
+            background-color: var(--secondary-color);
+        }
+        
+        .newsletter-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid var(--secondary-color);
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .newsletter-btn {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--highlight-color);
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a:hover {
+            color: var(--highlight-color);
+            padding-left: 5px;
+            transition: var(--transition);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--highlight-color);
+            color: var(--dark-color);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .copyright .year {
+            color: var(--highlight-color);
+            font-weight: bold;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+            
+            .mobile-menu {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 300px;
+                height: 100vh;
+                background-color: white;
+                box-shadow: -5px 0 15px rgba(242, 126, 136, 0.1);
+                z-index: 1001;
+                padding: 2rem;
+                transition: var(--transition);
+            }
+            
+            .mobile-menu.active {
+                right: 0;
+            }
+            
+            .mobile-menu-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 2rem;
+                padding-bottom: 1rem;
+                border-bottom: 1px solid var(--light-color);
+            }
+            
+            .mobile-nav-links {
+                display: flex;
+                flex-direction: column;
+                gap: 1.2rem;
+            }
+            
+            .mobile-nav-links a {
+                font-weight: 600;
+                font-size: 1rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: var(--primary-color);
+                padding: 0.5rem 0;
+                border-bottom: 1px solid rgba(242, 126, 136, 0.1);
+            }
+            
+            .mobile-nav-links a:last-child {
+                border-bottom: none;
+            }
+            
+            .overlay {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1000;
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+            }
+            
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .team-badge {
+                font-size: 0.65rem;
+                padding: 5px 10px;
+                bottom: 12px;
+                right: 12px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 3rem 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content {
+                padding: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .newsletter-input, .newsletter-btn {
+                border-radius: var(--border-radius);
+                width: 100%;
+            }
+            
+            .contacto-content {
+                gap: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+            }
+            
+            .team-badge {
+                font-size: 0.6rem;
+                padding: 4px 8px;
+                bottom: 10px;
+                right: 10px;
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Badge TEAM ABQ - Más discreto -->
+    <div class="team-badge">Powered by TEAM ABQ</div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">D'<span>YEM</span></a>
+                
+                <!-- Menú principal CORREGIDO - sin duplicados -->
+                <ul class="nav-links">
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#colecciones">Colecciones</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#nosotros">Nosotros</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+                
+                <div class="nav-icons">
+                    <!-- Bolso ahora lleva a página de bolsos -->
+                    <a href="bolsos.html"><i class="fas fa-shopping-bag"></i></a>
+                    <!-- Persona ahora lleva a página del equipo -->
+                    <a href="equipo.html"><i class="fas fa-user"></i></a>
+                </div>
+                
+                <div class="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu CORREGIDO - sin duplicados -->
+    <div class="overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <a href="#" class="logo">D'<span>YEM</span></a>
+            <div class="close-menu">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="#inicio">Inicio</a></li>
+            <li><a href="#colecciones">Colecciones</a></li>
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li><a href="bolsos.html">Bolsos</a></li>
+            <li><a href="equipo.html">Equipo</a></li>
+        </ul>
+    </div>
+    
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1>MARCA LA DIFERENCIA</h1>
+                <p>Descubre los destacados de todo el año de D'YEM, donde la artesanía se encuentra con la innovación para crear piezas únicas que definen el estilo moderno y <strong>marcan la diferencia</strong>.</p>
+                <a href="#colecciones" class="btn btn-accent">Explorar Colección 2025</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Colecciones -->
+    <section id="colecciones">
+        <div class="container">
+            <h2 class="section-title">Nuestras Colecciones 2025</h2>
+            <div class="collection-container">
+                <div class="collection-item">
+                    <img src="assets/images/colecciones/Bolsos Vichi (cuadritos blanco con otro color).jpg" alt="Colección Bolsos Vichi">
+                    <div class="collection-info">
+                        <h3>Bolsos Vichi</h3>
+                        <p>Bolsos con diseño de cuadritos en blanco combinados con colores vibrantes.</p>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <img src="assets/images/colecciones/Bolso Vichy.jpg" alt="Colección Bolso Vichy">
+                    <div class="collection-info">
+                        <h3>Bolso Vichy</h3>
+                        <p>Diseños clásicos con patrones vichy para un look fresco y moderno.</p>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <img src="assets/images/colecciones/Bolso Vichy.jpg" alt="Colección Vichy Exclusivo">
+                    <div class="collection-info">
+                        <h3>Vichy Exclusivo</h3>
+                        <p>Piezas únicas con el característico patrón vichy en versiones especiales.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Productos Destacados -->
+    <section id="productos" style="background-color: var(--light-color);">
+        <div class="container">
+            <h2 class="section-title">Productos Destacados 2025</h2>
+            <div class="products-slider">
+                <div class="products-container" id="products-slider">
+                    <!-- Productos se cargarán con JavaScript -->
+                </div>
+                <div class="slider-nav">
+                    <button class="slider-btn prev-btn"><i class="fas fa-chevron-left"></i></button>
+                    <button class="slider-btn next-btn"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sobre Nosotros -->
+    <section id="nosotros" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre D'YEM</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Fundada en <span class="about-year">2020</span>,En D'Yem, no solo creamos bolsos, ¡creamos piezas de arte! 💖 Somos una empresa artesanal dedicada a ofrecerte un producto exclusivo, donde cada accesorio es un reflejo de tu personalidad.
+Nos inspiramos en las últimas tendencias y usamos materiales innovadores para darte ese toque de estilo único que te hace destacar. <strong>¡Únete a nuestra comunidad de moda y marca la diferencia con uno de nuestros bolso!</strong>.</p>
+                    <a href="#contacto" class="btn">Conócenos Mejor</a>
+                </div>
+                <div class="about-img">
+                    <div>
+                        <h3>Descripción, Misión y Visión</h3>
+                        <p><strong>Misión:</strong> Nuestra misión es satisfacer la necesidad de la mujer moderna de accesorios que le permitan marcar la diferencia. Nos dedicamos a crear bolsos y accesorios que reflejen las últimas tendencias, sin sacrificar la autenticidad de la Marca. A través de la creatividad y el uso de materiales versatiles, cada pieza se convierte en una extensión de su personalidad y en un tesoro único en su closet..</p>
+                        <p><strong>Visión:</strong> Ser la marca de referencia en moda contemporánea, reconocida por nuestro compromiso con la sostenibilidad y la excelencia artesanal.</p>
+                        <p><strong>Valores:</strong> Innovación, calidad, autenticidad y compromiso con nuestros clientes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonios -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">Lo Que Dicen Nuestros Clientes</h2>
+            <div class="testimonials-container">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"La calidad de los productos D'YEM es incomparable. Cada detalle está cuidadosamente pensado y ejecutado. Mis accesorios favoritos son de esta marca."</p>
+                    <p class="testimonial-author">- María González</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Como estilista, siempre busco piezas únicas para mis clientes. D'YEM nunca decepciona. Su colección de bolsos es simplemente excepcional."</p>
+                    <p class="testimonial-author">- Carlos Rodríguez</p>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Compré una tote bag de D'YEM hace 2 años y sigue siendo mi bolso favorito para el día a día. La durabilidad y el diseño atemporal valen cada centavo."</p>
+                    <p class="testimonial-author">- Ana Martínez</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contacto -->
+    <section id="contacto" class="contacto">
+        <div class="container">
+            <h2 class="section-title">Contáctanos</h2>
+            <div class="contacto-content">
+                <div class="contacto-info">
+                    <h3>Información de Contacto</h3>
+                    <ul class="contacto-details">
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad Guayana - Estado Bolívar</li>
+                        <li><i class="fas fa-phone"></i> +58 424-9541584</li>
+                        <li><i class="fas fa-envelope"></i> maitayem@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Pregunte al número publicado</li>
+                    </ul>
+                    <div class="social-links" style="margin-top: 2rem;">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="contacto-form">
+                    <h3>Envíanos un mensaje</h3>
+                    <form action="https://formspree.io/f/myzrpjky" method="POST" id="contact-form">
+                        <div class="form-group">
+                            <input type="text" name="name" placeholder="Tu nombre completo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" placeholder="Tu correo electrónico" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="subject" placeholder="Asunto" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea name="message" placeholder="Tu mensaje" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn" style="width: 100%; background-color: var(--highlight-color);">
+                            <span id="submit-text">Enviar Mensaje</span>
+                            <div id="spinner" style="display: none;">
+                                <i class="fas fa-spinner fa-spin"></i> Enviando...
+                            </div>
+                        </button>
+                        <div id="form-message" style="margin-top: 1rem; text-align: center;"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Newsletter -->
+    <section class="newsletter">
+        <div class="container">
+            <h2 class="section-title">Únete a Nuestra Comunidad</h2>
+            <p>Suscríbete para recibir novedades exclusivas de nuestras colecciones 2025, invitaciones a eventos y ofertas especiales.</p>
+            <form class="newsletter-form" id="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Tu correo electrónico" required>
+                <button type="submit" class="btn newsletter-btn">Suscribirse</button>
+            </form>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>D'YEM</h3>
+                    <p>Desde <span class="about-year">2020</span>, creando moda de alta costura que redefine la elegancia atemporal. Descubre nuestras colecciones exclusivas y únete al mundo D'YEM.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Rápidos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#inicio">Inicio</a></li>
+                        <li><a href="#colecciones">Colecciones</a></li>
+                        <li><a href="#productos">Productos</a></li>
+                        <li><a href="#nosotros">Nosotros</a></li>
+                        <li><a href="bolsos.html">Bolsos</a></li>
+                        <li><a href="equipo.html">Equipo</a></li>
+                        <li><a href="#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-map-marker-alt"></i> Ciudad Guayana - Estado Bolívar</li>
+                        <li><i class="fas fa-phone"></i> +58 424-9541584</li>
+                        <li><i class="fas fa-envelope"></i> maitayem@gmail.com</li>
+                        <li><i class="fas fa-clock"></i> Pregunte al número publicado</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span class="year">2025</span> D'YEM. Todos los derechos reservados. | Fundada en 2020</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Datos de productos actualizados para 2025
+        const products = [
+            {
+                id: 1,
+                name: "Accesorios Cherry Boom",
+                category: "Accesorios",
+                price: "€45-€120",
+                image: "assets/images/productos/Accesorios Cherry Boom (zarcillos y collar de cerezas).jpg"
+            },
+            {
+                id: 2,
+                name: "Dyem Tote Bag",
+                category: "Bolsos",
+                price: "€95",
+                image: "assets/images/productos/Dyem Tote Bag.jpg"
+            },
+            {
+                id: 3,
+                name: "Braga Talla Única",
+                category: "Ropa",
+                price: "€28",
+                image: "assets/images/productos/Braga Talla unica.jpg"
+            },
+            {
+                id: 4,
+                name: "Camisas Playeras",
+                category: "Ropa",
+                price: "€35-€55",
+                image: "assets/images/productos/Camisas playeras.jpg"
+            },
+            {
+                id: 5,
+                name: "Cartucheras",
+                category: "Accesorios",
+                price: "€25-€40",
+                image: "assets/images/productos/Cartucheras.jpg"
+            },
+            {
+                id: 6,
+                name: "Porta Cosméticos",
+                category: "Accesorios",
+                price: "€30-€50",
+                image: "assets/images/productos/PortaCosmeticos.jpg"
+            }
+        ];
+        
+        // Variables globales
+        let currentSlide = 0;
+        const productsPerSlide = 3;
+        
+        // Inicializar cuando el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Actualizar año actual en el copyright
+            document.querySelector('.copyright .year').textContent = new Date().getFullYear();
+            
+            // Inicializar slider de productos
+            initProductSlider();
+            
+            // Inicializar navegación móvil
+            initMobileNav();
+            
+            // Inicializar efectos de scroll
+            initScrollEffects();
+            
+            // Inicializar formulario de newsletter
+            initNewsletterForm();
+            
+            // Inicializar formulario de contacto
+            initContactForm();
+            
+            // Actualizar diseño según tamaño de pantalla
+            updateSliderForScreenSize();
+            window.addEventListener('resize', updateSliderForScreenSize);
+        });
+        
+        // Slider de productos
+        function initProductSlider() {
+            const productsContainer = document.getElementById('products-slider');
+            
+            // Crear tarjetas de productos
+            products.forEach(product => {
+                const productCard = document.createElement('div');
+                productCard.className = 'product-card';
+                productCard.innerHTML = `
+                    <div class="product-img">
+                        <img src="${product.image}" alt="${product.name}" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'padding: 20px; text-align: center;\'>Imagen no disponible</div>';">
+                    </div>
+                    <div class="product-info">
+                        <p class="product-category">${product.category}</p>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-price">${product.price}</p>
+                        <button class="btn" style="margin-top: 10px; background-color: var(--highlight-color);">Ver Detalles</button>
+                    </div>
+                `;
+                productsContainer.appendChild(productCard);
+            });
+            
+            // Botones de navegación del slider
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            prevBtn.addEventListener('click', () => {
+                moveSlider(-1);
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                moveSlider(1);
+            });
+        }
+        
+        function moveSlider(direction) {
+            const productsContainer = document.getElementById('products-slider');
+            const totalProducts = products.length;
+            const maxSlide = Math.ceil(totalProducts / productsPerSlide) - 1;
+            
+            currentSlide += direction;
+            
+            if (currentSlide < 0) {
+                currentSlide = maxSlide;
+            } else if (currentSlide > maxSlide) {
+                currentSlide = 0;
+            }
+            
+            const translateX = -currentSlide * 100 / (totalProducts / productsPerSlide);
+            productsContainer.style.transform = `translateX(${translateX}%)`;
+        }
+        
+        // Ajustar slider según tamaño de pantalla
+        function updateSliderForScreenSize() {
+            const width = window.innerWidth;
+            let newProductsPerSlide = 3;
+            
+            if (width <= 992) {
+                newProductsPerSlide = 2;
+            }
+            
+            if (width <= 768) {
+                newProductsPerSlide = 1;
+            }
+            
+            // Solo actualizar si cambió
+            if (newProductsPerSlide !== productsPerSlide) {
+                // En un proyecto real, aquí actualizaríamos el slider
+                // Por simplicidad, solo reiniciamos la posición
+                currentSlide = 0;
+                const productsContainer = document.getElementById('products-slider');
+                productsContainer.style.transform = 'translateX(0%)';
+            }
+        }
+        
+        // Navegación móvil
+        function initMobileNav() {
+            const hamburger = document.querySelector('.hamburger');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            const closeMenu = document.querySelector('.close-menu');
+            const overlay = document.querySelector('.overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-nav-links a');
+            
+            hamburger.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeMenu.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            overlay.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                overlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.remove('active');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+        }
+        
+        // Efectos de scroll
+        function initScrollEffects() {
+            const header = document.querySelector('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+            
+            // Smooth scroll para enlaces internos
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Formulario de newsletter
+        function initNewsletterForm() {
+            const newsletterForm = document.getElementById('newsletter-form');
+            
+            newsletterForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const emailInput = this.querySelector('.newsletter-input');
+                const email = emailInput.value;
+                
+                if (validateEmail(email)) {
+                    // Simular envío de formulario
+                    emailInput.value = '';
+                    alert('¡Gracias por suscribirte a nuestra newsletter de 2025! Te hemos enviado un correo de confirmación.');
+                } else {
+                    alert('Por favor, introduce un correo electrónico válido.');
+                }
+            });
+        }
+        
+        // Formulario de contacto con Formspree
+        function initContactForm() {
+            const contactForm = document.getElementById('contact-form');
+            const formMessage = document.getElementById('form-message');
+            const submitText = document.getElementById('submit-text');
+            const spinner = document.getElementById('spinner');
+            
+            if (!contactForm) return;
+            
+            contactForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                // Mostrar spinner y ocultar texto
+                submitText.style.display = 'none';
+                spinner.style.display = 'block';
+                
+                // Deshabilitar el botón
+                const submitBtn = this.querySelector('button[type="submit"]');
+                submitBtn.disabled = true;
+                
+                // Obtener datos del formulario
+                const formData = new FormData(this);
+                
+                try {
+                    const response = await fetch(this.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
+                    
+                    if (response.ok) {
+                        // Éxito
+                        formMessage.innerHTML = '<div class="success-message">¡Mensaje enviado con éxito! Te contactaremos pronto.</div>';
+                        contactForm.reset();
+                    } else {
+                        // Error
+                        const data = await response.json();
+                        if (data.errors) {
+                            formMessage.innerHTML = `<div class="error-message">${data.errors.map(error => error.message).join(', ')}</div>`;
+                        } else {
+                            formMessage.innerHTML = '<div class="error-message">Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.</div>';
+                        }
+                    }
+                } catch (error) {
+                    // Error de red
+                    formMessage.innerHTML = '<div class="error-message">Error de conexión. Por favor, verifica tu internet e inténtalo de nuevo.</div>';
+                } finally {
+                    // Restaurar estado del botón
+                    submitBtn.disabled = false;
+                    submitText.style.display = 'block';
+                    spinner.style.display = 'none';
+                    
+                    // Ocultar mensaje después de 5 segundos
+                    setTimeout(() => {
+                        formMessage.innerHTML = '';
+                    }, 5000);
+                }
+            });
+        }
+        
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+    </script>
+</body>
+</html>

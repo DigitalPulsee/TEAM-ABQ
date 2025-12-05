@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipo D'YEM | Conoce Nuestro Team</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables CSS con la nueva paleta de colores */
+        :root {
+            --primary-color: #F27E88;     /* Rosa principal */
+            --secondary-color: #F2B3B9;   /* Rosa claro */
+            --accent-color: #F27E93;      /* Rosa intenso */
+            --light-color: #F2F2F2;       /* Gris claro */
+            --highlight-color: #F2AE30;   /* Dorado/naranja */
+            --dark-color: #333333;        /* Texto oscuro */
+            --transition: all 0.3s ease;
+            --spacing: 2rem;
+            --border-radius: 8px;
+            --shadow: 0 5px 15px rgba(242, 126, 136, 0.1);
+            --shadow-intense: 0 8px 25px rgba(242, 126, 136, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            margin-bottom: 1.5rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            display: block;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background-color: var(--highlight-color);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-intense);
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(242, 126, 136, 0.1);
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        .back-home {
+            font-weight: 600;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-home:hover {
+            color: var(--accent-color);
+        }
+        
+        /* Hero Equipo */
+        .hero-equipo {
+            background-color: var(--secondary-color);
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .hero-equipo h1 {
+            font-size: 3rem;
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+        
+        /* Información del Equipo */
+        .equipo-info {
+            padding: 3rem 0;
+            background-color: var(--light-color);
+        }
+        
+        .equipo-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--highlight-color);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .copyright .year {
+            color: var(--highlight-color);
+            font-weight: bold;
+        }
+        
+        /* Badge TEAM ABQ - Más discreto */
+        .team-badge {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background-color: rgba(242, 174, 48, 0.85);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 999;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            letter-spacing: 0.5px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+        
+        .team-badge:hover {
+            background-color: rgba(242, 174, 48, 0.95);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        /* Mensaje de equipo temporal */
+        .equipo-message {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            margin: 2rem 0;
+        }
+        
+        .equipo-message i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-equipo h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .equipo-message {
+                padding: 2rem;
+            }
+            
+            .team-badge {
+                font-size: 0.65rem;
+                padding: 5px 10px;
+                bottom: 12px;
+                right: 12px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .team-badge {
+                font-size: 0.6rem;
+                padding: 4px 8px;
+                bottom: 10px;
+                right: 10px;
+                border-radius: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Badge TEAM ABQ - Más discreto -->
+    <div class="team-badge">Powered by TEAM ABQ</div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="index.html" class="logo">D'<span>YEM</span></a>
+                <a href="index.html" class="back-home">
+                    <i class="fas fa-arrow-left"></i> Volver al inicio
+                </a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Equipo -->
+    <section class="hero-equipo">
+        <div class="container">
+            <h1>Nuestro Equipo D'YEM</h1>
+            <p>Conoce a las mentes creativas y expertas que hacen posible la magia de D'YEM.</p>
+        </div>
+    </section>
+    
+    <!-- Información del Equipo -->
+    <div class="container">
+        <div class="equipo-message">
+            <i class="fas fa-users"></i>
+            <h2>Próximamente: Nuestro Equipo</h2>
+            <p>Actualmente estamos trabajando en la presentación de nuestro increíble equipo D'YEM. Muy pronto podrás conocer a las personas talentosas detrás de cada diseño y creación.</p>
+            <p>Mientras tanto, te invitamos a explorar nuestras colecciones y productos exclusivos.</p>
+            <a href="index.html" class="btn" style="margin-top: 1rem;">Volver a la tienda</a>
+        </div>
+    </div>
+    
+    <section class="equipo-info">
+        <div class="container">
+            <div class="equipo-text">
+                <h2 class="section-title">Sobre Nuestro Team</h2>
+                <p>En D'YEM creemos que el talento y la pasión son la base de cada creación exitosa. Nuestro equipo está compuesto por diseñadores, artesanos y expertos en moda que comparten un objetivo común: crear piezas únicas que marquen la diferencia.</p>
+                <p>Cada miembro de nuestro equipo aporta su experiencia única, desde el diseño conceptual hasta la selección de materiales y la confección final. Trabajamos juntos para asegurar que cada producto D'YEM cumpla con nuestros altos estándares de calidad y diseño.</p>
+                <p>¡Pronto revelaremos las caras detrás de D'YEM! Mientras tanto, seguimos trabajando para traerte las mejores colecciones de moda.</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>D'YEM</h3>
+                    <p>Desde 2020, creando moda de alta costura que redefine la elegancia atemporal.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Av. de la Moda 123, Madrid, España</li>
+                        <li><i class="fas fa-phone"></i> +34 912 345 678</li>
+                        <li><i class="fas fa-envelope"></i> info@dyem.com</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; <span class="year">2025</span> D'YEM. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Inicializar cuando el DOM esté cargado
+        document.addEventListener('DOMContentLoaded', function() {
+            // Actualizar año actual en el copyright
+            document.querySelector('.copyright .year').textContent = new Date().getFullYear();
+        });
+    </script>
+</body>
+</html>
